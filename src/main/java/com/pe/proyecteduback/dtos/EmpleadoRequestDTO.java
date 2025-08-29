@@ -22,9 +22,9 @@ public class EmpleadoRequestDTO {
     @Email(message = "El email no tiene un formato válido")
     private String email;
 
-    @NotBlank(message = "La contraseña no puede estar vacía")
-    @Size(min = 6, message = "La contraseña debe tener al menos 6 caracteres")
-    private String password;
+//    @NotBlank(message = "La contraseña no puede estar vacía")
+//    @Size(min = 6, message = "La contraseña debe tener al menos 6 caracteres")
+//    private String password;
 
     @NotNull(message = "El rol es obligatorio")
     private Long rolId;

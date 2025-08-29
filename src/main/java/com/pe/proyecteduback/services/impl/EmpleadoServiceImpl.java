@@ -36,14 +36,18 @@ public class EmpleadoServiceImpl implements EmpleadoService {
         empleado.setApellido(request.getApellido());
         empleado.setEmail(request.getEmail());
 
-        empleado.setPassword(passwordEncoder.encode(request.getPassword()));
+        String defaultPassword = request.getNombre() + request.getApellido() + "2025";
+        empleado.setPassword(passwordEncoder.encode(defaultPassword));
 
         Rol rol = rolRepository.findById(request.getRolId())
                 .orElseThrow(() -> new RuntimeException("Rol no encontrado"));
         empleado.setRol(rol);
 
         empleado = empleadoRepository.save(empleado);
-        return mapToResponse(empleado);
+
+        EmpleadoResponseDTO response = mapToResponse(empleado);
+        // response.setPassword(defaultPassword);
+        return response;
     }
 
     @Override
@@ -55,9 +59,9 @@ public class EmpleadoServiceImpl implements EmpleadoService {
         empleado.setApellido(request.getApellido());
         empleado.setEmail(request.getEmail());
 
-        if (request.getPassword() != null && !request.getPassword().isBlank()) {
-            empleado.setPassword(passwordEncoder.encode(request.getPassword()));
-        }
+//        if (request.getPassword() != null && !request.getPassword().isBlank()) {
+//            empleado.setPassword(passwordEncoder.encode(request.getPassword()));
+//        }
 
         Rol rol = rolRepository.findById(request.getRolId())
                 .orElseThrow(() -> new RuntimeException("Rol no encontrado"));
@@ -97,6 +101,7 @@ public class EmpleadoServiceImpl implements EmpleadoService {
                 empleado.getApellido(),
                 empleado.getEmail(),
                 empleado.getRol().getNombre(),
+                empleado.getRol().getId(),
                 empleado.getCreatedAt(),
                 empleado.getUpdatedAt()
         );

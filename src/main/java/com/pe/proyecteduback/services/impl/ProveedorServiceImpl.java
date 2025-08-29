@@ -21,8 +21,11 @@ public class ProveedorServiceImpl implements ProveedorService {
 
     @Override
     public ProveedorResponseDTO crearProveedor(ProveedorRequestDTO request) {
+        System.out.println(request);
         Proveedor proveedor = new Proveedor();
         proveedor.setNombre(request.getNombre());
+        proveedor.setContacto(request.getContacto());
+        proveedor.setDireccion(request.getDireccion());
         proveedor.setEmail(request.getEmail());
         proveedor.setTelefono(request.getTelefono());
 
@@ -36,6 +39,8 @@ public class ProveedorServiceImpl implements ProveedorService {
                 .orElseThrow(() -> new RuntimeException("Proveedor no encontrado"));
 
         proveedor.setNombre(request.getNombre());
+        proveedor.setContacto(request.getContacto());
+        proveedor.setDireccion(request.getDireccion());
         proveedor.setEmail(request.getEmail());
         proveedor.setTelefono(request.getTelefono());
 

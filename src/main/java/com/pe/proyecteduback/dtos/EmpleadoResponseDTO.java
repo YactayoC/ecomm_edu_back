@@ -16,6 +16,7 @@ public class EmpleadoResponseDTO {
     private String apellido;
     private String email;
     private String rolNombre;
+    private Long rolId;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }
