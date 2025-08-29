@@ -94,6 +94,13 @@ public class EmpleadoServiceImpl implements EmpleadoService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public boolean existePorCorreo(String correo) {
+        return empleadoRepository.findByEmail(
+                correo != null ? correo.trim().toLowerCase() : null
+        ).isPresent();
+    }
+
     private EmpleadoResponseDTO mapToResponse(Empleado empleado) {
         return new EmpleadoResponseDTO(
                 empleado.getId(),

@@ -24,7 +24,6 @@ public class EmpleadoController {
         return ResponseEntity.ok(empleadoService.listarEmpleados());
     }
 
-    // 🔹 Obtener empleado por ID
     @GetMapping("/{id}")
     public ResponseEntity<EmpleadoResponseDTO> obtenerEmpleado(@PathVariable Long id) {
         return ResponseEntity.ok(empleadoService.obtenerEmpleadoPorId(id));

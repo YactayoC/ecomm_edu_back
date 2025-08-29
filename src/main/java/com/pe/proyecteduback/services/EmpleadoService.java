@@ -11,4 +11,5 @@ public interface EmpleadoService {
     void eliminarEmpleado(Long id);
     EmpleadoResponseDTO obtenerEmpleadoPorId(Long id);
     List<EmpleadoResponseDTO> listarEmpleados();
+    boolean existePorCorreo(String correo);
 }
